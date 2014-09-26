@@ -18,7 +18,7 @@
     <string name="app_title_todo">TODOs</string>
     <string name="app_title_archived">Archived</string>
     <string name="app_title_email">Email TODOs</string><string name="app_title_email_todo">Email TODOs</string>
-    <string name="app_title_summary">Summary</string>
+    <string name="app_title_email_arch">Email Archived TODOs</string><string name="app_title_summary">Summary</string>
     
     
     
@@ -29,6 +29,7 @@
     <string name="button_email_email_all">Email all TODOs</string><string name="todo_add">Add</string>
     <string name="email_todo_send">Send</string>
     <string name="menu_email_cancel">Cancel</string>
+    
     
     
 

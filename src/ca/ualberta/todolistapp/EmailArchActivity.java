@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class EmailTodoActivity extends Activity
+public class EmailArchActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
 	private ArrayList<TodoItem> arch_list;
@@ -36,9 +36,9 @@ public class EmailTodoActivity extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.email_todo);    
+        setContentView(R.layout.email_arch);    
         
-        list_view = (ListView) findViewById(R.id.email_todo_list);
+        list_view = (ListView) findViewById(R.id.email_arch_list);
     }
     
     @Override
@@ -53,14 +53,14 @@ public class EmailTodoActivity extends Activity
 		curr_list = (ArrayList<TodoItem>) bundle.getSerializable("curr_list");
 		arch_list = (ArrayList<TodoItem>) bundle.getSerializable("arch_list");
 		
-		editText0 = (EditText) findViewById(R.id.edit_email_addr);
-		editText1 = (EditText) findViewById(R.id.edit_e_title);
+		editText0 = (EditText) findViewById(R.id.edit_email_addr2);
+		editText1 = (EditText) findViewById(R.id.edit_e_title2);
 
-		send_button = (Button) findViewById(R.id.email_todo_button_send0);
+		send_button = (Button) findViewById(R.id.email_arch_button_send0);
 		
 		positions = new ArrayList<Integer>();
         adapter = new ArrayAdapter<TodoItem>(this,
-                android.R.layout.simple_list_item_multiple_choice, curr_list);
+                android.R.layout.simple_list_item_multiple_choice, arch_list);
         list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         list_view.setAdapter(adapter);
         
@@ -110,11 +110,11 @@ public class EmailTodoActivity extends Activity
             		{
             			String content = new String();
             		
-            			content += "Your unarchived TODO items:\n\n";
+            			content += "Your archived TODO items:\n\n";
             			
             			for (int pos : positions)
             			{
-            				content += curr_list.get(pos).get_display()+"\n";
+            				content += arch_list.get(pos).get_display()+"\n";
             			}
             			
             			content += "\nEnd of message.";
@@ -127,7 +127,7 @@ public class EmailTodoActivity extends Activity
                 		email_intent.putExtra(Intent.EXTRA_SUBJECT, editText1.getText().toString());
                 		email_intent.putExtra(Intent.EXTRA_TEXT, content);
                 		
-                		Toast toast = Toast.makeText(EmailTodoActivity.this, "You have no email clients installed.", Toast.LENGTH_SHORT);
+                		Toast toast = Toast.makeText(EmailArchActivity.this, "You have no email clients installed.", Toast.LENGTH_SHORT);
                 		
                 		try {
                 		    startActivity(Intent.createChooser(email_intent, "Send mail..."));
@@ -148,7 +148,7 @@ public class EmailTodoActivity extends Activity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.email_todo_activity_menu, menu);
+        getMenuInflater().inflate(R.menu.email_arch_activity_menu, menu);
         return true;
     }
 
@@ -159,7 +159,7 @@ public class EmailTodoActivity extends Activity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.menu_email_todo_main)
+        if (id == R.id.menu_email_arch_main)
         {
         	// pass data to next activity
         	bundle = new Bundle();
@@ -167,12 +167,12 @@ public class EmailTodoActivity extends Activity
         	bundle.putSerializable("curr_list", curr_list);
         	bundle.putSerializable("arch_list", arch_list);
         	
-    		Intent intent = new Intent(EmailTodoActivity.this, MainActivity.class);
+    		Intent intent = new Intent(EmailArchActivity.this, MainActivity.class);
         	intent.putExtras(bundle);
         	
     		startActivity(intent);
         }
-        else if (id == R.id.menu_email_todo_cancel)
+        else if (id == R.id.menu_email_arch_cancel)
         {
         	editText0.setText("");
         	editText1.setText("");
@@ -182,7 +182,7 @@ public class EmailTodoActivity extends Activity
         	bundle.putSerializable("curr_list", curr_list);
         	bundle.putSerializable("arch_list", arch_list);
         	
-    		Intent intent = new Intent(EmailTodoActivity.this, EmailActivity.class);
+    		Intent intent = new Intent(EmailArchActivity.this, EmailActivity.class);
         	intent.putExtras(bundle);
         	
     		startActivity(intent);

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class EmailActivity extends Activity
 {
@@ -48,15 +49,23 @@ public class EmailActivity extends Activity
         	@Override
         	public void onClick(View arg0)
         	{
-            	bundle = new Bundle();
-
-            	bundle.putSerializable("curr_list", curr_list);
-            	bundle.putSerializable("arch_list", arch_list);
-            	
-        		Intent intent = new Intent(EmailActivity.this, EmailTodoActivity.class);
-            	intent.putExtras(bundle);
-            	
-        		startActivity(intent);
+        		if (curr_list.size() == 0)
+        		{
+            		Toast toast = Toast.makeText(EmailActivity.this, "You have no unarchived TODO items.", Toast.LENGTH_SHORT);
+            		toast.show();
+        		}
+        		else
+        		{
+        			bundle = new Bundle();
+        			
+        			bundle.putSerializable("curr_list", curr_list);
+        			bundle.putSerializable("arch_list", arch_list);
+        			
+        			Intent intent = new Intent(EmailActivity.this, EmailTodoActivity.class);
+            		intent.putExtras(bundle);
+            		
+            		startActivity(intent);
+        		}
         	}
         });
         button1.setOnClickListener(new OnClickListener()
@@ -64,15 +73,23 @@ public class EmailActivity extends Activity
         	@Override
         	public void onClick(View arg0)
         	{
-            	bundle = new Bundle();
-
-            	bundle.putSerializable("curr_list", curr_list);
-            	bundle.putSerializable("arch_list", arch_list);
-            	
-        		Intent intent = new Intent(EmailActivity.this, MainActivity.class);
-            	intent.putExtras(bundle);
-            	
-        		startActivity(intent);
+        		if (arch_list.size() == 0)
+        		{
+            		Toast toast = Toast.makeText(EmailActivity.this, "You have no archived TODO items.", Toast.LENGTH_SHORT);
+            		toast.show();
+        		}
+        		else
+        		{
+        			bundle = new Bundle();
+        			
+        			bundle.putSerializable("curr_list", curr_list);
+        			bundle.putSerializable("arch_list", arch_list);
+        			
+        			Intent intent = new Intent(EmailActivity.this, EmailArchActivity.class);
+            		intent.putExtras(bundle);
+            		
+            		startActivity(intent);
+        		}
         	}
         });
         button2.setOnClickListener(new OnClickListener()
@@ -80,15 +97,23 @@ public class EmailActivity extends Activity
         	@Override
         	public void onClick(View arg0)
         	{
-            	bundle = new Bundle();
-
-            	bundle.putSerializable("curr_list", curr_list);
-            	bundle.putSerializable("arch_list", arch_list);
-            	
-        		Intent intent = new Intent(EmailActivity.this, MainActivity.class);
-            	intent.putExtras(bundle);
-            	
-        		startActivity(intent);
+        		if ((curr_list.size() == 0) && (arch_list.size() == 0))
+        		{
+            		Toast toast = Toast.makeText(EmailActivity.this, "You do not have a single TODO item stored.", Toast.LENGTH_SHORT);
+            		toast.show();
+        		}
+        		else
+        		{
+        			bundle = new Bundle();
+        			
+        			bundle.putSerializable("curr_list", curr_list);
+        			bundle.putSerializable("arch_list", arch_list);
+        			
+        			Intent intent = new Intent(EmailActivity.this, EmailAllActivity.class);
+            		intent.putExtras(bundle);
+            		
+            		startActivity(intent);
+        		}
         	}
         });
     }

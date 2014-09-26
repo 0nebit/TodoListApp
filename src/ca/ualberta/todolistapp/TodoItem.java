@@ -49,6 +49,11 @@ public class TodoItem implements Serializable
 		return this.display;
 	}
 	
+	public String get_display()
+	{
+		return this.display;
+	}
+	
 	private void update_display()
 	{
 		this.display = this.item;
