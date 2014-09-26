@@ -116,10 +116,25 @@ public class EmailTodoActivity extends Activity
             			}
             			
             			// send email
+                		
+                		Intent email_intent = new Intent(Intent.ACTION_SEND);
+                		
+                		//email_intent.setType("message/rfc822");
+                		email_intent.setType("text/plain");
+                		email_intent.putExtra(Intent.EXTRA_EMAIL, editText0.getText().toString());
+                		email_intent.putExtra(Intent.EXTRA_SUBJECT, editText1.getText().toString());
+                		email_intent.putExtra(Intent.EXTRA_TEXT, content);
+                		
+                		Toast toast = Toast.makeText(EmailTodoActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT);
+                		
+                		try {
+                		    startActivity(Intent.createChooser(email_intent, "Send mail..."));
+                		} catch (android.content.ActivityNotFoundException ex) {
+                		    toast.show();
+                		}
+                		
                 		editText0.setText("");
                 		editText1.setText("");
-                		
-                		
             		}
             	}
             }
