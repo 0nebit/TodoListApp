@@ -30,6 +30,8 @@
     <string name="email_todo_send">Send</string>
     <string name="menu_email_cancel">Cancel</string>
     <string name="app_title_email_all">Email All Items</string>
+    <string name="email_addr">&lt;- Recipient Address</string>
+    <string name="email_subject">&lt;- Email Subject</string>
     
     
     

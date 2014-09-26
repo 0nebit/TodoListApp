@@ -39,5 +39,24 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/email_todo_send" />
+
+    <TextView
+        android:id="@+id/email_arch_addr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_e_title2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/edit_email_addr2"
+        android:text="@string/email_addr" />
+
+    <TextView
+        android:id="@+id/email_arch_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edit_e_title2"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/edit_e_title2"
+        android:text="@string/email_subject" />
     
 </RelativeLayout>
