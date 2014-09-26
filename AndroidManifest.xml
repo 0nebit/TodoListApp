@@ -53,6 +53,12 @@
 			</intent-filter>
         </activity>
         <activity
+            android:name="ca.ualberta.todolistapp.EmailAllActivity"
+            android:label="@string/app_title_email_all" >
+			<intent-filter >
+			</intent-filter>
+        </activity>
+        <activity
             android:name="ca.ualberta.todolistapp.SummaryActivity"
             android:label="@string/app_title_summary" >
 			<intent-filter >

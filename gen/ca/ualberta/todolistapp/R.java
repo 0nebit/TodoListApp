@@ -96,6 +96,7 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int app_title_archived=0x7f050013;
         public static final int app_title_email=0x7f050014;
+        public static final int app_title_email_all=0x7f05001e;
         public static final int app_title_email_arch=0x7f050016;
         public static final int app_title_email_todo=0x7f050015;
         public static final int app_title_main=0x7f050011;
