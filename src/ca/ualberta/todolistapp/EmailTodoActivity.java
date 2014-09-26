@@ -118,7 +118,7 @@ public class EmailTodoActivity extends Activity
             			// send email
                 		
                 		Intent email_intent = new Intent(Intent.ACTION_SEND);
-                		
+                		/*
                 		//email_intent.setType("message/rfc822");
                 		email_intent.setType("text/plain");
                 		email_intent.putExtra(Intent.EXTRA_EMAIL, editText0.getText().toString());
@@ -132,6 +132,9 @@ public class EmailTodoActivity extends Activity
                 		} catch (android.content.ActivityNotFoundException ex) {
                 		    toast.show();
                 		}
+                		*/
+                		Toast toast = Toast.makeText(EmailTodoActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT);
+                		toast.show();
                 		
                 		editText0.setText("");
                 		editText1.setText("");

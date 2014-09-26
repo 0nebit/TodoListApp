@@ -5,11 +5,12 @@
     android:orientation="vertical" >
     
     <ListView
-   	    android:id="@+id/display_todo"
-   	    android:layout_width="match_parent"
-   	    android:layout_height="wrap_content"
-   	    android:layout_alignParentRight="true"
-   	    android:scrollbars="vertical" >
+        android:id="@+id/display_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/email_todo_button1"
+        android:layout_alignParentRight="true"
+        android:scrollbars="vertical" >
 
     </ListView>
     
