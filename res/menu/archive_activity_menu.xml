@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item
+        android:id="@+id/menu_arch_main"
+        android:title="@string/menu_main_MainMenu"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_arch_check"
+        android:title="@string/menu_arch_check"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_arch_uncheck"
+        android:title="@string/menu_arch_uncheck"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_arch_delete"
+        android:title="@string/menu_arch_delete"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_arch_unarchive"
+        android:title="@string/menu_arch_unarchive"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+
+</menu>

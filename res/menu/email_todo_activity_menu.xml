@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item
+        android:id="@+id/menu_email_todo_main"
+        android:title="@string/menu_main_MainMenu"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+    
+    <item
+        android:id="@+id/menu_email_todo_cancel"
+        android:title="@string/menu_email_cancel"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+
+</menu>

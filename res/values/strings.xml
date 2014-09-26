@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">chuan4TodoListApp</string><string name="main_menu_title">Welcome to Todo List App!</string><string name="main_menu_msg">Please select an action from one of the drop down menu on the top right corner.</string>
+    <string name="menu_main_MainMenu">Main Menu</string>
+    <string name="menu_main_todos">TODOs</string>
+    <string name="menu_main_archived">Archived</string>
+    <string name="menu_main_email">Email TODOs</string><string name="menu_main_summary">Summary</string><string name="menu_todo_check">Check TODOs</string>
+    <string name="menu_todo_uncheck">Uncheck TODOs</string><string name="menu_todo_delete">Delete TODOs</string><string name="menu_todo_archive">Archive TODOs</string>
+    
+    <string name="menu_arch_check">Check Archived</string><string name="menu_arch_uncheck">Uncheck Archived</string>
+    <string name="menu_arch_delete">Delete Archived</string><string name="menu_arch_unarchive">Unarchive Archived</string><string name="todo_enter_todo_prompt">Please enter a new todo and touch the Add button to add.</string>
+    
+    
+    
+    
+    <string name="app_title_main">Todo List 2000</string>
+    <string name="app_title_todo">TODOs</string>
+    <string name="app_title_archived">Archived</string>
+    <string name="app_title_email">Email TODOs</string><string name="app_title_email_todo">Email TODOs</string>
+    <string name="app_title_summary">Summary</string>
+    
+    
+    
+    
+    
+    <string name="button_email_email_todos">Email TODOs</string>
+    <string name="button_email_email_arch">Email archived TODOs</string>
+    <string name="button_email_email_all">Email all TODOs</string><string name="todo_add">Add</string>
+    <string name="email_todo_send">Send</string>
+    <string name="menu_email_cancel">Cancel</string>
+    
+    
+
+</resources>

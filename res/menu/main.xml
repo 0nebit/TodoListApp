@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.ualberta.todolistapp.MainActivity" >
+            
+	<item
+        android:id="@+id/menu_main"
+        android:title="@string/menu_main_MainMenu"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_todos"
+        android:title="@string/menu_main_todos"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_archive"
+        android:title="@string/menu_main_archived"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_email"
+        android:title="@string/menu_main_email"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+	
+	<item
+        android:id="@+id/menu_summary"
+        android:title="@string/menu_main_summary"
+        android:checkable="false"
+        android:checked="false"
+        android:visible="true" />
+
+</menu>
