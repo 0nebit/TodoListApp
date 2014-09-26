@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+// test comment 0
 public class ArchiveActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
