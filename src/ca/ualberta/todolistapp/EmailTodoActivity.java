@@ -110,18 +110,20 @@ public class EmailTodoActivity extends Activity
             		{
             			String content = new String();
             		
+            			content += "Your TODO items:\n\n";
+            			
             			for (int pos : positions)
             			{
-            				content.concat(curr_list.get(pos).toString()+"\n");
+            				content += curr_list.get(pos).toString()+"\n";
             			}
             			
+            			content += "\nEnd of message.";
             			// send email
                 		
                 		Intent email_intent = new Intent(Intent.ACTION_SEND);
-                		/*
-                		//email_intent.setType("message/rfc822");
-                		email_intent.setType("text/plain");
-                		email_intent.putExtra(Intent.EXTRA_EMAIL, editText0.getText().toString());
+            			
+                		email_intent.setType("message/rfc822");
+                		email_intent.putExtra(Intent.EXTRA_EMAIL, new String[] {editText0.getText().toString()});
                 		email_intent.putExtra(Intent.EXTRA_SUBJECT, editText1.getText().toString());
                 		email_intent.putExtra(Intent.EXTRA_TEXT, content);
                 		
@@ -132,10 +134,7 @@ public class EmailTodoActivity extends Activity
                 		} catch (android.content.ActivityNotFoundException ex) {
                 		    toast.show();
                 		}
-                		*/
-                		Toast toast = Toast.makeText(EmailTodoActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT);
-                		toast.show();
-                		
+
                 		editText0.setText("");
                 		editText1.setText("");
             		}

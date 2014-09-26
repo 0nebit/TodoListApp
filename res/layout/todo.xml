@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/button_add"
         android:layout_toLeftOf="@+id/button_add"
         android:ems="10"
         android:inputType="text" />

@@ -25,17 +25,17 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int button_add=0x7f08000d;
+        public static final int button_add=0x7f08000e;
         public static final int display_archive=0x7f080002;
         public static final int display_summary=0x7f08000a;
         public static final int display_todo=0x7f08000b;
         public static final int edit_e_title=0x7f080007;
         public static final int edit_email_addr=0x7f080006;
-        public static final int edit_enter_text=0x7f08000c;
+        public static final int edit_enter_text=0x7f08000d;
         public static final int email_button0=0x7f080003;
         public static final int email_button1=0x7f080004;
         public static final int email_button2=0x7f080005;
-        public static final int email_todo_button1=0x7f08000e;
+        public static final int email_todo_button1=0x7f08000c;
         public static final int email_todo_button_send0=0x7f080009;
         public static final int email_todo_list=0x7f080008;
         public static final int main_menu_msg=0x7f080001;

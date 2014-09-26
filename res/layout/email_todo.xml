@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="textEmailAddress" />
-
+    
     <EditText
         android:id="@+id/edit_e_title"
         android:layout_width="wrap_content"
@@ -19,16 +19,13 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/edit_email_addr"
         android:ems="10"
-        android:inputType="textMultiLine" >
-
-        <requestFocus />
-    </EditText>
-	
+        android:inputType="text" />
+    
     <ListView
         android:id="@+id/email_todo_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/email_todo_button_send0"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/edit_e_title" >
         
         <requestFocus />
@@ -42,5 +39,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/email_todo_send" />
-    
+ 
 </RelativeLayout>
