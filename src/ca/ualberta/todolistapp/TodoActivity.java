@@ -16,6 +16,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/* This activity handles all the functionalities on unarhived TODO items.
+ * It takes new TODOs from user input and allows the user to:
+ * 		check/uncheck TODOs
+ * 		delete TODOs
+ * 		and archive TODOs
+ */
 public class TodoActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
@@ -28,8 +34,9 @@ public class TodoActivity extends Activity
 	private Button doneButton;
 	private EditText editText;
 	
+	// for getting the indices of the selected items from the ListView
 	private SparseBooleanArray selected;
-	private ArrayList<Integer> positions;
+	private ArrayList<Integer> positions; // stores the selected indices
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,10 +61,13 @@ public class TodoActivity extends Activity
 		
 		positions = new ArrayList<Integer>();
 				
+		// adapts to curr_list which stores all not-archived items
+		// which this activities displays and adds to
+		// uses built-in layout simple_list_item_multiple_choice
         adapter = new ArrayAdapter<TodoItem>(this,
                 android.R.layout.simple_list_item_multiple_choice, curr_list);
         
-        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // allows for multiple selections of items
         list_view.setAdapter(adapter);
 
         doneButton = (Button) findViewById(R.id.button_add);
@@ -118,15 +128,15 @@ public class TodoActivity extends Activity
         else if (id == R.id.menu_todo_check)
         {
         	int total = 0;
-        	update_positions();
+        	update_positions(); // get selected indices
         	for (int pos : positions)
         	{
 				TodoItem temp = curr_list.get(pos);
-				if (temp.checked() == 0)
+				if (temp.checked() == 0) // only check unchecked items
 				{
 					temp.set_checked(1);
 					curr_list.set(pos, temp);
-					total += 1;
+					total += 1; // update number of items handled, for Toast display
 				}
 			}
 				
@@ -145,7 +155,7 @@ public class TodoActivity extends Activity
         	for (int pos : positions)
         	{
 				TodoItem temp = curr_list.get(pos);
-				if (temp.checked() == 1)
+				if (temp.checked() == 1) // only unchecks checked items
 				{
 					temp.set_checked(0);
 					curr_list.set(pos, temp);
@@ -167,10 +177,12 @@ public class TodoActivity extends Activity
         	update_positions();
         	for (int pos : positions)
         	{
+        		// need to set to null because saved index numbers relies on original positions of items
 				curr_list.set(pos, null);
 				total += 1;
 			}
         	
+        	// remove items (null)
         	while (curr_list.contains(null))
         	{
         		curr_list.remove(null);
@@ -195,11 +207,13 @@ public class TodoActivity extends Activity
 				{
 					temp.set_archived(1);
 					arch_list.add(temp);
+	        		// need to set to null because saved index numbers relies on original positions of items
 					curr_list.set(pos, null);
 					total += 1;
 				}
 			}
            	
+           	// remove items (null)
         	while (curr_list.contains(null))
         	{
         		curr_list.remove(null);
@@ -223,6 +237,7 @@ public class TodoActivity extends Activity
     	super.onDestroy();
     }
     
+    // passes the selected positions to the array positions
     private void update_positions()
     {
     	positions.clear();
@@ -230,7 +245,7 @@ public class TodoActivity extends Activity
 		int pos = 0;
 		for (int i = 0; i < selected.size(); i++)
 		{
-			if (selected.valueAt(i) == true)
+			if (selected.valueAt(i) == true) // if index i is selected
 			{
 				pos = selected.keyAt(i);
 				positions.add(pos);

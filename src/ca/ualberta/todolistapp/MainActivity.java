@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 
+/* This activity is the Main activity. It serves as the main portal to every
+ * other activity. It contains a main drop down menu and a greeting message.
+ */
 public class MainActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
@@ -21,6 +24,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
+        // these two arrays stores all the necessary date
+        // initializes when the app first gets created
     	curr_list = new ArrayList<TodoItem>();
     	arch_list = new ArrayList<TodoItem>();
     }
@@ -32,6 +37,8 @@ public class MainActivity extends Activity
 		
 		Intent intent = getIntent();
 		
+		// if main activity gets called by another activity,
+		// retrieve passed data
 		if (intent.getExtras() != null)
 		{
 			bundle = intent.getExtras();
@@ -52,9 +59,7 @@ public class MainActivity extends Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+    	// handles menu selections on the action bar
         int id = item.getItemId();
         if (id == R.id.menu_todos)
         {	

@@ -10,12 +10,30 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+/* this activity summarizes information of all the items.
+ * It displays five categories in a ListView.
+ * The categories are:
+ * 		number of checked unarchived items
+ * 		number of unchecked unarchived items
+ * 		total number of archived items
+ * 		number of checked archived items
+ * 		number of unchecked archived items
+ */
+
 public class SummaryActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
 	private ArrayList<TodoItem> arch_list;
+	/* This list saves the integers of the five categories dsplayed.
+	 * 		index 0 = number of checked unarchived items
+	 * 		index 1 = number of unchecked unarchived items
+	 * 		index 2 = total number of archived items
+	 * 		index 3 = number of checked archived items
+	 * 		index 4 = number of unchecked archived items
+	 */
 	private ArrayList<Integer> info_list;
 	
+	// temporary list to store displayed information
 	private ArrayList<String> display_list;
 	
 	private ListView list_view;
@@ -36,6 +54,7 @@ public class SummaryActivity extends Activity
     {
     	super.onStart();
     	
+    	// initializes info_list for storing and updating
     	info_list = new ArrayList<Integer>();
     	for (int i = 0; i < 5; i++)
     	{
@@ -101,6 +120,8 @@ public class SummaryActivity extends Activity
     	super.onDestroy();
     }
     
+    // updates the info_list. Initially zero, updates once after getExtras() gets the
+    // stored information
     private void update_info_list()
     {
     	// update not archived TODOs

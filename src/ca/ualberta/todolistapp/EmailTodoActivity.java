@@ -17,6 +17,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/* This activity handles emailing unarchived TODOs.
+ * The user enters the recipient address and email subject and
+ * selects a selection of TODOs for emailing. The task is continued through a "send"
+ * button and the built-in email client is used to handle the actual emailing.
+ */
 public class EmailTodoActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
@@ -24,8 +29,8 @@ public class EmailTodoActivity extends Activity
 	
 	private Bundle bundle;
 
-	private EditText editText0;
-	private EditText editText1;
+	private EditText editText0; // takes addr
+	private EditText editText1; // takes email subject
 	private ListView list_view;
 	private ArrayAdapter<TodoItem> adapter;
 	private Button send_button;
@@ -59,9 +64,12 @@ public class EmailTodoActivity extends Activity
 		send_button = (Button) findViewById(R.id.email_todo_button_send0);
 		
 		positions = new ArrayList<Integer>();
+		
+		// adapts to curr_list which stores all not-archived items
+		// uses built-in layout simple_list_item_multiple_choice
         adapter = new ArrayAdapter<TodoItem>(this,
                 android.R.layout.simple_list_item_multiple_choice, curr_list);
-        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // allows for multiple selections of items
         list_view.setAdapter(adapter);
         
         send_button.setOnClickListener(new OnClickListener()
@@ -97,6 +105,7 @@ public class EmailTodoActivity extends Activity
             		toast.show();            	}
             	else
             	{
+            		// if both fields are filled
             		update_positions();
             		if (positions.size() == 0)
             		{
@@ -110,6 +119,7 @@ public class EmailTodoActivity extends Activity
             		{
             			String content = new String();
             		
+            			// format content of message
             			content += "Your unarchived TODO items:\n\n";
             			
             			for (int pos : positions)
@@ -118,17 +128,22 @@ public class EmailTodoActivity extends Activity
             			}
             			
             			content += "\nEnd of message.";
+            			
             			// send email
                 		
                 		Intent email_intent = new Intent(Intent.ACTION_SEND);
             			
                 		email_intent.setType("message/rfc822");
+                		// passes address string to intent's extra email address data
                 		email_intent.putExtra(Intent.EXTRA_EMAIL, new String[] {editText0.getText().toString()});
+                		// passes subject name to intent's extra email subject data
                 		email_intent.putExtra(Intent.EXTRA_SUBJECT, editText1.getText().toString());
+                		// passes formatted content to intent's extra content area
                 		email_intent.putExtra(Intent.EXTRA_TEXT, content);
                 		
                 		Toast toast = Toast.makeText(EmailTodoActivity.this, "You have no email clients installed.", Toast.LENGTH_SHORT);
                 		
+                		// try starting intent to start email client
                 		try {
                 		    startActivity(Intent.createChooser(email_intent, "Send mail..."));
                 		} catch (android.content.ActivityNotFoundException ex) {
@@ -152,6 +167,9 @@ public class EmailTodoActivity extends Activity
         return true;
     }
 
+    /* two menu items, Main Menu and Cancel
+     * Cancel takes the user back to the main emailing portal
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -197,6 +215,7 @@ public class EmailTodoActivity extends Activity
     	super.onDestroy();
     }
     
+    // updates array positions with selected indices
     private void update_positions()
     {
     	positions.clear();

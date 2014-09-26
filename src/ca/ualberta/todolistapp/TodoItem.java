@@ -2,6 +2,14 @@ package ca.ualberta.todolistapp;
 
 import java.io.Serializable;
 
+/* class to represent a TODO item
+ * handles checks for whether the item is:
+ * 		checked/unchecked
+ * 		archived/unarchived
+ * Also stores displayable string.
+ * And also self handles changes to new information. Updates display string
+ * if data is changed. ie. checked/unchecked.
+ */
 public class TodoItem implements Serializable
 {
 	/**
@@ -10,7 +18,7 @@ public class TodoItem implements Serializable
 	private static final long serialVersionUID = -2108287748641899647L;
 
 	private String item;
-	private String display;
+	private String display; // stores a formatted string for displays
 	private int is_checked;
 	private int is_archived;
 	
@@ -54,6 +62,7 @@ public class TodoItem implements Serializable
 		return this.display;
 	}
 	
+	// reformats this.display to status changes
 	private void update_display()
 	{
 		this.display = this.item;

@@ -17,6 +17,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/* This activity handles emailing archived TODOs.
+ * The user enters the recipient address and email subject and
+ * selects a selection of TODOs for emailing. The task is continued through a "send"
+ * button and the built-in email client is used to handle the actual emailing.
+ */
 public class EmailArchActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
@@ -24,8 +29,8 @@ public class EmailArchActivity extends Activity
 	
 	private Bundle bundle;
 
-	private EditText editText0;
-	private EditText editText1;
+	private EditText editText0; // takes address
+	private EditText editText1; // takes email subject
 	private ListView list_view;
 	private ArrayAdapter<TodoItem> adapter;
 	private Button send_button;
@@ -59,9 +64,12 @@ public class EmailArchActivity extends Activity
 		send_button = (Button) findViewById(R.id.email_arch_button_send0);
 		
 		positions = new ArrayList<Integer>();
+		
+		// adapts to arch_list which stores all archived items
+		// uses built-in layout simple_list_item_multiple_choice
         adapter = new ArrayAdapter<TodoItem>(this,
-                android.R.layout.simple_list_item_multiple_choice, arch_list);
-        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+                android.R.layout.simple_list_item_multiple_choice, arch_list); 
+        list_view.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); // allows for multiple selections of items
         list_view.setAdapter(adapter);
         
         send_button.setOnClickListener(new OnClickListener()
@@ -108,8 +116,10 @@ public class EmailArchActivity extends Activity
             		}
             		else
             		{
+                		// if both fields are filled
             			String content = new String();
             		
+            			// format content of message
             			content += "Your archived TODO items:\n\n";
             			
             			for (int pos : positions)
@@ -123,12 +133,16 @@ public class EmailArchActivity extends Activity
                 		Intent email_intent = new Intent(Intent.ACTION_SEND);
             			
                 		email_intent.setType("message/rfc822");
+                		// passes address string to intent's extra email address data
                 		email_intent.putExtra(Intent.EXTRA_EMAIL, new String[] {editText0.getText().toString()});
+                		// passes subject name to intent's extra email subject data
                 		email_intent.putExtra(Intent.EXTRA_SUBJECT, editText1.getText().toString());
+                		// passes formatted content to intent's extra content area
                 		email_intent.putExtra(Intent.EXTRA_TEXT, content);
                 		
                 		Toast toast = Toast.makeText(EmailArchActivity.this, "You have no email clients installed.", Toast.LENGTH_SHORT);
                 		
+                		// try starting intent to start email client
                 		try {
                 		    startActivity(Intent.createChooser(email_intent, "Send mail..."));
                 		} catch (android.content.ActivityNotFoundException ex) {
@@ -152,6 +166,9 @@ public class EmailArchActivity extends Activity
         return true;
     }
 
+    /* two menu items, Main Menu and Cancel
+     * Cancel takes the user back to the main emailing portal
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {

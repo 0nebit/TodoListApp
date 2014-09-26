@@ -12,11 +12,22 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+/* This activity is the main screen to emailing. It is a portal for which emailing tasks the
+ * user wants to do. It the the gate to:
+ * 		selecting and emailing unarchived TODO items
+ * 		selecting and emailing archived TODO items
+ * 		emailing all items
+ * 
+ * It contains three buttons for each and warns the user of empty content.
+ */
 public class EmailActivity extends Activity
 {
 	private ArrayList<TodoItem> curr_list;
 	private ArrayList<TodoItem> arch_list;
 	
+	// button0 for unarchived TODOs
+	// button1 for archived TODOs
+	// button2 for all TODOs
 	private Button button0, button1, button2;
 	
 	private Bundle bundle;
@@ -56,6 +67,7 @@ public class EmailActivity extends Activity
         		}
         		else
         		{
+        			// no empty lists, ok to go to emailing activity
         			bundle = new Bundle();
         			
         			bundle.putSerializable("curr_list", curr_list);
@@ -80,6 +92,7 @@ public class EmailActivity extends Activity
         		}
         		else
         		{
+        			// no empty lists, ok to go to emailing activity
         			bundle = new Bundle();
         			
         			bundle.putSerializable("curr_list", curr_list);
@@ -104,6 +117,7 @@ public class EmailActivity extends Activity
         		}
         		else
         		{
+        			// no empty lists, ok to go to emailing activity
         			bundle = new Bundle();
         			
         			bundle.putSerializable("curr_list", curr_list);
@@ -126,6 +140,7 @@ public class EmailActivity extends Activity
         return true;
     }
 
+    /* only one menu item, Main Mene */
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
