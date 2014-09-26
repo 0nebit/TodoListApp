@@ -117,7 +117,7 @@ public class EmailTodoActivity extends Activity
             				content += curr_list.get(pos).toString()+"\n";
             			}
             			
-            			content += "\nEnd of message.";
+            			content += "End of message.";
             			// send email
                 		
                 		Intent email_intent = new Intent(Intent.ACTION_SEND);
