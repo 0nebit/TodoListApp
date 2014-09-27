@@ -62,7 +62,7 @@ public class TodoActivity extends Activity
 		positions = new ArrayList<Integer>();
 				
 		// adapts to curr_list which stores all not-archived items
-		// which this activities displays and adds to
+		// which this activity displays and adds to
 		// uses built-in layout simple_list_item_multiple_choice
         adapter = new ArrayAdapter<TodoItem>(this,
                 android.R.layout.simple_list_item_multiple_choice, curr_list);
